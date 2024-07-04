@@ -9,6 +9,6 @@ public interface Animal {
     String speak();
     Integer getNumberOfMealsEaten();
     Integer getId();
-    void eat(Food food);
+    Object eat(Food food);
 
 }

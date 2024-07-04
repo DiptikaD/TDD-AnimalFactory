@@ -2,14 +2,21 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Mammal;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
  * @author leon on 4/19/18.
  */
 public class CatTest {
+
+
+
     // TODO - Create tests for `void setName(String name)`
     // TODO - Create tests for `speak`
     // TODO - Create tests for `setBirthDate(Date birthDate)`
@@ -38,6 +45,57 @@ public class CatTest {
         Assert.assertEquals(givenName, retrievedName);
         Assert.assertEquals(givenBirthDate, retrievedBirthDate);
         Assert.assertEquals(givenId, retrievedId);
+    }
+
+    @Test
+    public void setNameTest(){
+        Cat kitty = new Cat();
+        kitty.setName("bogus");
+        Assert.assertEquals("bogus", kitty.getName());
+    }
+
+    @Test
+    public void speakTest(){
+        Cat kitty = new Cat();
+        Assert.assertEquals("meow!", kitty.speak());
+    }
+
+    @Test
+    public void setBirthDateTest(){
+        Cat kitty = new Cat();
+        Date expectedBirthDate = new Date(2002, Calendar.OCTOBER,1);
+        kitty.setBirthDate(expectedBirthDate);
+        Assert.assertEquals(expectedBirthDate,kitty.getBirthDate());
+        Assert.assertEquals(2002,kitty.getBirthDate().getYear());
+    }
+
+    @Test
+    public void eatTest(){
+        Cat kitty = new Cat();
+        String food = "onions";
+        Assert.assertEquals(food, kitty.eat());
+
+    }
+
+    @Test
+    public void getIDTest(){
+        Date date = new Date(1992, 03,02);
+        Cat kitty = new Cat("Stinky", date, 1);
+        kitty.getId();
+        int expected = kitty.getId();
+        Assert.assertEquals(1, expected);
+    }
+
+    @Test
+    public void inheritanceAnimalTest(){
+        Cat kitty = new Cat();
+        Assert.assertTrue(kitty instanceof Animal);
+    }
+
+    @Test
+    public void inheritanceMammalTest(){
+        Cat kitty = new Cat();
+        Assert.assertTrue(kitty instanceof Mammal);
     }
 
 }
